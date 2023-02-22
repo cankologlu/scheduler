@@ -2,12 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import "components/Button.scss";
 
-// export default function Button(props) {
-//    const {children} = props;
-//    return (
-//    <button>{children}</button>
-//    );
-// }
+
 
 export default function Button(props) {
  
@@ -19,5 +14,5 @@ export default function Button(props) {
       </button>;
  }
 
-//  onClick="alert('you kliked?');
+
 
