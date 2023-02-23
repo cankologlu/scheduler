@@ -3,7 +3,7 @@ import "components/InterviewerList.scss";
 import InterviewListItem from "./InterviewListItem";
 
 export default function InterviewerList(props) {
-  console.log("props for interviewer list:", props);
+ 
 
   const { interviewers, onChange, value } = props;
 
