@@ -6,8 +6,7 @@ export default function InterviewListItem (props) {
   const {id, name, avatar, setInterviewer, selected ,interviewer} = props;
   
   const interviewerClass = classNames("interviewers__item", {"interviewers__item--selected": selected})
-  console.log("props are:", props);
-  console.log(interviewerClass);
+
   
     
   return (
