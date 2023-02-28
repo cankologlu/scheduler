@@ -36,6 +36,7 @@ export default function Appointment(props) {
     bookInterview(id, interview)
     .then(()=> transition(SHOW))
     .catch((err) => {
+      console.log(err)
       transition(ERROR_SAVE, true)
     })
   }
@@ -48,7 +49,7 @@ export default function Appointment(props) {
   }
 
 
-  // console.log("props in appointment:", props )
+
   return (
     <article className="appointment">
       <Header time={time} />
