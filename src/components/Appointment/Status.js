@@ -8,7 +8,8 @@ export default function Status(props) {
     src="images/status.png"
     alt="Loading"
   />
-  <h1 className="text--semi-bold">Deleting</h1>
+  {props.deleting && <h1 className="text--semi-bold">Deleting</h1>}
+  {props.saving && <h1 className="text--semi-bold">Saving</h1>}
 </main>
   )
 }

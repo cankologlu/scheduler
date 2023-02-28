@@ -5,7 +5,7 @@ import Button from "components/Button";
 export default function From(props) {
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
-  const { value, interviewers, onSave, onCancel, studentSolo } = props;
+  const { interviewers, onSave, onCancel } = props;
 
   const reset = () => {
     setInterviewer(null);
@@ -15,6 +15,8 @@ export default function From(props) {
     reset();
     onCancel();
   };
+
+  
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -45,7 +47,7 @@ export default function From(props) {
           <Button danger onClick={cancel}>
             Cancel
           </Button>
-          <Button confirm onClick={onSave}>
+          <Button confirm onClick={() => onSave(student, interviewer)}>
             Save
           </Button>
         </section>
