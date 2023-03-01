@@ -23,13 +23,12 @@ export default function From(props) {
       return;
     }
     if (interviewer === null) {
-      setError("please select an interviewer")
+      setError("please select an interviewer");
       return;
     }
-  
+    setError("");
     onSave(student, interviewer);
   }
-  
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -38,9 +37,7 @@ export default function From(props) {
           autoComplete="off"
           onSubmit={(event) => {
             event.preventDefault();
-          }
-        }
-        
+          }}
         >
           <input
             className="appointment__create-input text--semi-bold"
@@ -49,12 +46,11 @@ export default function From(props) {
             placeholder="Enter Student Name"
             value={student}
             onChange={(event) => {
-             setStudent(event.target.value)
-             }}
-              data-testid="student-name-input"   
+              setStudent(event.target.value);
+            }}
+            data-testid="student-name-input"
           />
-          <section className="appointment__validation">{error}
-          </section>
+          <section className="appointment__validation">{error}</section>
         </form>
         <InterviewerList
           value={interviewer}
@@ -67,8 +63,12 @@ export default function From(props) {
           <Button danger onClick={cancel}>
             Cancel
           </Button>
-          <Button confirm onClick={() => {
-            validate()}}>
+          <Button
+            confirm
+            onClick={() => {
+              validate();
+            }}
+          >
             Save
           </Button>
         </section>
