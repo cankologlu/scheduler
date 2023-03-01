@@ -1,6 +1,6 @@
 import React from "react";
 import { waitForElement } from "@testing-library/react";
-import { render, cleanup, fireEvent, getByText, prettyDOM, getAllByTestId } from "@testing-library/react";
+import { render, cleanup, fireEvent, getByText, prettyDOM, getAllByTestId, getByAltText, getByPlaceholderText } from "@testing-library/react";
 import Application from "components/Application";
 
 
@@ -23,8 +23,18 @@ describe("Application", () => {
     const {container} = render(<Application/>)
     
     await waitForElement(() => getByText(container, "Archie Cohen"));
-    const appointments = getAllByTestId(container, "appointment")[0];
+    const appointments = getAllByTestId(container, "appointment");
+    const appointment = getAllByTestId(container, "appointment")[0]
+    console.log(prettyDOM(appointments))
 
+    fireEvent.click(getByAltText(appointment, "Add"));
+    
+    fireEvent.change(getByPlaceholderText(appointment, /Enter Student Name/i), {
+      target: { value: "Lydia Miller-Jones" }
+    });
+    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
+    
+    fireEvent.click(getByText(appointment, "Save"));
     console.log(prettyDOM(appointments))
   });
 });
