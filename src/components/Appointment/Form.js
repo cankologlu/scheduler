@@ -16,8 +16,6 @@ export default function From(props) {
     onCancel();
   };
 
-  
-
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -33,7 +31,9 @@ export default function From(props) {
             type="text"
             placeholder="Enter Student Name"
             value={student}
-            onChange={(event) => setStudent(event.target.value)}
+            onChange={(event) => 
+              setStudent(event.target.value)}
+              data-testid="student-name-input"
           />
         </form>
         <InterviewerList

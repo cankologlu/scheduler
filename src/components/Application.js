@@ -18,7 +18,7 @@ export default function Application() {
     setDay,
     bookInterview,
     cancelInterview
-  } =useApplicationData();
+  } = useApplicationData();
       
   // console.log("this is day:",state.day)             re-writing function
   // console.log("this is days obj:", state.days)              
