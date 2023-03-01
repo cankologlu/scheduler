@@ -1,6 +1,6 @@
 import React from "react";
 import { waitForElement } from "@testing-library/react";
-import { render, cleanup, fireEvent, getByText, prettyDOM } from "@testing-library/react";
+import { render, cleanup, fireEvent, getByText, prettyDOM, getAllByTestId } from "@testing-library/react";
 import Application from "components/Application";
 
 
@@ -18,8 +18,13 @@ describe("Application", () => {
     expect(getByText("Leopold Silvers")).toBeInTheDocument();
   });
 
-  it("loads data, books an interview and reducesthe spots remaining for the first day by 1", () => {
+  it("loads data, books an interview and reducesthe spots remaining for the first day by 1", async () => {
+
     const {container} = render(<Application/>)
-    console.log(prettyDOM(container))
+    
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+    const appointments = getAllByTestId(container, "appointment")[0];
+
+    console.log(prettyDOM(appointments))
   });
 });
