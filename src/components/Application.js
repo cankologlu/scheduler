@@ -60,7 +60,8 @@ export default function Application() {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">{parsedAppointment}</section>
+      <section className="schedule">{parsedAppointment}
+      </section>
     </main>
   );
 }
