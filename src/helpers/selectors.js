@@ -1,4 +1,5 @@
-export function getAppointmentsForDay(state, day) {           //
+export function getAppointmentsForDay(state, day) {           
+  //Returns an array of appointments for the given day
   const arrAppointments = [];
   const daysAppointments = state.days.filter((obj) => obj.name === day);
   if (daysAppointments.length === 0) {
@@ -10,7 +11,8 @@ export function getAppointmentsForDay(state, day) {           //
   return arrAppointments;
 }
 
-export function getInterview(state, interview) {
+export function getInterview(state, interview) {  
+  //Updates interviews with interviewer object 
   if (!interview) {
     return null;
   }
@@ -21,7 +23,8 @@ export function getInterview(state, interview) {
   };
 }
 
-export function getInterviewersForDay(state, day) {
+export function getInterviewersForDay(state, day) {   
+  //Returns available interviewers by id according to days
   const arrInterviewers = [];
   const daysInterviewers = state.days.filter((obj) => obj.name === day);
   if (daysInterviewers.length === 0) {

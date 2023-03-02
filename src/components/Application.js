@@ -20,7 +20,7 @@ export default function Application() {
     cancelInterview
   } = useApplicationData();
       
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const dailyAppointments = getAppointmentsForDay(state, state.day);        
 
   const parsedAppointment = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
+  //Unique hook to run the application returns necessary functions in an object
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -9,7 +10,8 @@ export default function useApplicationData() {
     interviewers: {},
   });
 
-  useEffect(() => {
+  useEffect(() => {              
+ //Hook to connect to api and stop loop connection otherwise
     const daysURL = '/api/days';
     const appointmentsURL = '/api/appointments';
     const interviewerURL = '/api/interviewers';
@@ -29,6 +31,7 @@ export default function useApplicationData() {
   }, []);
 
   function bookInterview(id, interview) {
+  //Saves appointment with available id key
     const addAppointmentURL = `api/appointments/${id}`;
 
     const appointment = {
@@ -59,6 +62,7 @@ export default function useApplicationData() {
   }
 
   function cancelInterview(id) {
+    //Delets appointment with available id key
     const addAppointmentURL = `api/appointments/${id}`;
 
     const appointment = {
@@ -88,7 +92,8 @@ export default function useApplicationData() {
       });
   }
 
-  function calculateSpotsRemaining(currentDay)  {
+  function calculateSpotsRemaining(currentDay)  {                             
+    // Updates available spots through an array of null interviews
     const [dayObj] = state.days.filter(day => day.name === currentDay)
     const appointmentIds = dayObj.appointments
     const appointments = appointmentIds.map((id) => state.appointments[id])

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function useVisualMode(initial) {
+  //Unique hook to transition between modes and display boxes on render
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
@@ -23,7 +24,3 @@ export default function useVisualMode(initial) {
 
   return { mode, transition, back };
 }
-
-// const {first, second} = useVisualMode
-
-// (prev) => {[...prev]}
