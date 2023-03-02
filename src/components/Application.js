@@ -20,9 +20,6 @@ export default function Application() {
     cancelInterview
   } = useApplicationData();
       
-  // console.log("this is day:",state.day)             re-writing function
-  // console.log("this is days obj:", state.days)              
-  // console.log("this is appointments:", state.appointments)
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   const parsedAppointment = dailyAppointments.map((appointment) => {
