@@ -21,5 +21,5 @@ Interview scheduler is a single page app based on React, designed to schedule me
 
 ## Screenshots
 
-!["Screenshot of tweets desktop version"]
-!["Screenshot of tweets desktop version"]
+!["Screenshot of scheduler"](https://github.com/cankologlu/scheduler/blob/master/docs/scheduler.png?raw=true)
+!["Screenshot of scheduler"](https://github.com/cankologlu/scheduler/blob/master/docs/scheduler2.png?raw=true)
