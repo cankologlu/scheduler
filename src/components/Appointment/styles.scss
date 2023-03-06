@@ -104,9 +104,9 @@ $appointment-height: 11rem;
 
   &:last-of-type &__add,
   &:last-of-type &__card 
-  // {
-  //   display: none;
-  // }
+  {
+    display: none;
+  }
 
   &__actions {
     margin-top: 1rem;

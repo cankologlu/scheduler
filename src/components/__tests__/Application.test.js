@@ -28,7 +28,7 @@ describe("Application", () => {
     expect(getByText("Leopold Silvers")).toBeInTheDocument();
   });
 
-  it("loads data, books an interview and reducesthe spots remaining for the first day by 1", async () => {
+  it("loads data, books an interview and reduces the spots remaining for the first day by 1", async () => {
     const { container, debug } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
@@ -93,8 +93,9 @@ describe("Application", () => {
 
   it("shows the save error when failing to save an appointment", () => {
     axios.put.mockRejectedValueOnce();
+    const { container, debug } = render(<Application />);
     // click add
-    
+   
     // enter student
     // click interviewer
     // clikc save

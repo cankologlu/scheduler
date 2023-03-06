@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import "components/Appointment/styles.scss";
 import Header from "./Header";
@@ -32,12 +32,14 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    transition(SAVING, true)
+
+    transition(SAVING)
     bookInterview(id, interview)
     .then(()=> transition(SHOW))
     .catch((err) => {
       console.log(err)
       transition(ERROR_SAVE, true)
+
     })
   }
 
@@ -48,20 +50,28 @@ export default function Appointment(props) {
     .catch((err) => transition(ERROR_DELETE, true));
   }
 
-
+  useEffect(() => {
+    if (interview && mode === EMPTY) {
+      transition(SHOW);
+    }
+    if (interview === null && mode === SHOW) {
+      transition(EMPTY);
+    }
+  }, [interview, transition, mode]); 
 
   return (
     <article className="appointment" data-testid="appointment">
       <Header time={time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)}/>}
-      {mode === SHOW && <Show student={interview.student} interviewer={interview.interviewer} onDelete={() => transition(CONFIRM)} onEdit={() => transition(EDIT)}/>}
+      {mode === SHOW && <Show student={interview.student} interviewer=
+      {interview.interviewer} onDelete={() => transition(CONFIRM)} onEdit={() => transition(EDIT)}/>}
       {mode === CREATE && <Form onSave = {save} onCancel={() => back()} interviewers={interviewers}/>}
       {mode === SAVING && <Status saving={SAVING}/>}
       {mode === DELETE && <Status deleting={DELETE}/>}
       {mode === CONFIRM && <Confirm onCancel={back} onConfirm={cancel} message={"Did you want to delete?"}/>}
       {mode === EDIT && <Form onSave={save} onCancel={() => back()} student={interview.student} interviewers={interviewers} interviewer={interview.interviewer.id}/>}
-      {mode === ERROR_DELETE && <Error onClose={back}/>}
-      {mode === ERROR_SAVE && <Error onClose={back}/>}
+      {mode === ERROR_DELETE && <Error onClose={back} message={"Error deleting the interview."}/>}
+      {mode === ERROR_SAVE && <Error onClose={back} message={"Error saving the invterview."}/>}
     </article>
   );
 }

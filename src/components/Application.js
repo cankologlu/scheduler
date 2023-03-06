@@ -10,17 +10,13 @@ import {
 } from "helpers/selectors";
 
 import useApplicationData from "hooks/useApplicationData";
+import Empty from "./Appointment/Empty";
 
 export default function Application() {
- 
-  const {
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview
-  } = useApplicationData();
-      
-  const dailyAppointments = getAppointmentsForDay(state, state.day);        
+  const { state, setDay, bookInterview, cancelInterview } =
+    useApplicationData();
+
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   const parsedAppointment = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
@@ -57,7 +53,9 @@ export default function Application() {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">{parsedAppointment}
+      <section className="schedule">
+        {parsedAppointment}
+        <Appointment key={"last"} time={"5pm"}/>
       </section>
     </main>
   );
