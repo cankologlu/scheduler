@@ -10,7 +10,7 @@ import {
 } from "helpers/selectors";
 
 import useApplicationData from "hooks/useApplicationData";
-import Empty from "./Appointment/Empty";
+
 
 export default function Application() {
   const { state, setDay, bookInterview, cancelInterview } =

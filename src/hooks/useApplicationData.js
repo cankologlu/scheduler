@@ -90,18 +90,6 @@ export default function useApplicationData() {
     };
 
     return axios.put(addAppointmentURL, { interview }).then((res) => {
-      // const currentSpotsRemaining = calculateSpotsRemaining(state.day, id, "REMOVE_SPOT")
-      // const days = state.days.map(day => {
-      //   if (day.name === state.day) {
-      //     return {
-      //       ...day,
-      //       spots: currentSpotsRemaining - 1
-      //     }
-      //   }else {
-      //     return day;
-      //   }
-      // })
-      // setState({ ...state, appointments, days })
       const spotUpdate = updateSpots(
         state.day,
         state.days,
@@ -131,18 +119,6 @@ export default function useApplicationData() {
     };
 
     return axios.delete(addAppointmentURL).then(() => {
-      // const currentSpotsRemaining = calculateSpotsRemaining(state.day, id, "ADD_SPOT")
-      // const days = state.days.map(day => {
-      //   if (day.name === state.day) {
-      //     return {
-      //       ...day,
-      //       spots: currentSpotsRemaining + 1
-      //     }
-      //   }else {
-      //     return day;
-      //   }
-      // })
-      // setState({ ...state, appointments, days })
       const spotUpdate = updateSpots(
         state.day,
         state.days,
@@ -158,39 +134,7 @@ export default function useApplicationData() {
     });
   }
 
-  function calculateSpotsRemaining(currentDay, id, action) {
-    // Updates available spots through an array of null interviews
-    const [dayObj] = state.days.filter((day) => day.name === currentDay);
-    console.log("dayObj", dayObj);
-    const appointmentIds = dayObj.appointments;
-    const appointments = appointmentIds.map((aptId) => {
-      // return id === aptId  ? state.appointments[id] : state.appointments[aptId];
-
-      // console.log("state.app", state.appointments[aptId])
-      // console.log("aptId is", aptId)
-      // if (aptId === id) {
-
-      // }
-      return state.appointments[aptId];
-    });
-    console.log(state.appointments[id]);
-    if (state.appointments[id].interview !== null && action === "REMOVE_SPOT") {
-      dayObj = [...dayObj];
-      return dayObj;
-      console.log("dayObjSpots", dayObj.spots);
-      console.log("123");
-    }
-    if (state.appointments[id].interview === null && action === "REMOVE_SPOT") {
-      dayObj = { ...dayObj, spots: dayObj.spots - 1 };
-      return dayObj;
-      console.log("dayObjSpots", dayObj.spots);
-      console.log("abc");
-    }
-
-    const emptySpots = appointments.filter((appt) => appt.interview === null);
-    console.log("empty spots", emptySpots);
-    return emptySpots.length;
-  }
+ 
 
   const setDay = (day) => setState({ ...state, day });
 
